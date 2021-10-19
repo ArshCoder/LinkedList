@@ -1,6 +1,7 @@
 package javapractice;
 
 public class MyLinkedList {
+    private static Object MyLinkedListTest;
     public INode head;
     public INode tail;
 
@@ -43,21 +44,25 @@ public class MyLinkedList {
         newNode.setNext(tempNode);
     }
 
-
-
+    public INode pop(MyNode<Integer> myFirstNode) {
+        INode tempNode = this.head;
+        this.head = head.getNext();
+        return tempNode;
+    }
 
     public void printMyNodes() {
-            StringBuffer myNodes = new StringBuffer("My Nodes: ");
-            INode tempNode = head;
-            while (tempNode.getNext() != null) {
-                myNodes.append(tempNode.getKey());
-                if (!tempNode.equals(tail))
-                    myNodes.append("->");
-                tempNode = tempNode.getNext();
-            }
+        StringBuffer myNodes = new StringBuffer("My Nodes: ");
+        INode tempNode = head;
+        while (tempNode.getNext() != null) {
             myNodes.append(tempNode.getKey());
-            System.out.println(myNodes);
+            if (!tempNode.equals(tail))
+                myNodes.append("->");
+            tempNode = tempNode.getNext();
         }
+        myNodes.append(tempNode.getKey());
+        System.out.println(myNodes);
+    }
+
 }
 
 
